@@ -44,8 +44,8 @@ public class VehicleInventoryApp {
 
             //do something based on the answer
             switch (command) {
-                case 1 -> System.out.println("Coming Soon");
-                case 2 -> System.out.println("Coming Soon");
+                case 1 ->listAllVehicles();
+                case 2 -> searchByMake();
                 case 3 -> System.out.println("Coming Soon");
                 case 4 -> System.out.println("Coming Soon");
                 case 5 -> System.out.println("Coming Soon");
@@ -62,6 +62,20 @@ public class VehicleInventoryApp {
 
     }
     public static void listAllVehicles() {
-        System.out.println(vehicleCount);
+        System.out.println("Total: " +vehicleCount);
+        for (int i = 0; i < vehicleCount; i++) {
+            System.out.println(vehicles[i]);
+        }
+    }
+
+    public static void searchByMake() {
+        input.nextLine();
+        System.out.println("Enter make model:");
+        String model = input.nextLine();
+        for ( int i = 0; i < vehicleCount; i++ ) {
+            if ( vehicles[i].getMakeModel().equalsIgnoreCase(model) ) {
+                System.out.println(vehicles[i]);
+            }
+        }
     }
 }
