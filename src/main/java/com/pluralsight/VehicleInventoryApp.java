@@ -47,8 +47,8 @@ public class VehicleInventoryApp {
                 case 1 ->listAllVehicles();
                 case 2 -> searchByMake();
                 case 3 -> System.out.println("Coming Soon");
-                case 4 -> System.out.println("Coming Soon");
-                case 5 -> System.out.println("Coming Soon");
+                case 4 -> searchByColor();
+                case 5 -> addVehicle();
                 case 6 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid command");
             }
@@ -74,6 +74,42 @@ public class VehicleInventoryApp {
         String model = input.nextLine();
         for ( int i = 0; i < vehicleCount; i++ ) {
             if ( vehicles[i].getMakeModel().equalsIgnoreCase(model) ) {
+                System.out.println(vehicles[i]);
+            }
+        }
+    }
+
+    public static void addVehicle() {
+
+        System.out.print("Enter Vehicle ID: ");
+        long vehicleId = input.nextLong();
+
+        input.nextLine();
+
+        System.out.print("Enter Vehicle Make Model: ");
+        String makeModel = input.nextLine();
+
+        System.out.print("Enter Vehicle Color: ");
+        String color = input.nextLine();
+
+        System.out.print("Enter Vehicle Odometer Reading: ");
+        int odometerReading = input.nextInt();
+
+        System.out.print("Enter Vehicle Price: ");
+        double price = input.nextDouble();
+//
+        vehicles[vehicleCount] = new Vehicle(vehicleId, makeModel, color, odometerReading, price);
+        vehicleCount++;
+
+        System.out.println("Vehicle added successfully!");
+    }
+
+    public static void searchByColor() {
+        input.nextLine();
+        System.out.print("Enter color: ");
+        String color = input.nextLine();
+        for ( int i = 0; i < vehicleCount; i++ ) {
+            if ( vehicles[i].getColor().equalsIgnoreCase(color) ) {
                 System.out.println(vehicles[i]);
             }
         }
